@@ -14,12 +14,13 @@ class Main {
 
 
     static int toplamExpense = 0;
-    static int harcamalar;
+    static String[] harcamalar = new String[100];
     static int sayac = -1;
     static int toplamIncome = 0;
 
     static int counter = 0;
     static int counter2 = 0;
+    static int counter3 = 0;
 
 
     static void addingIncome(int valueOfIncome) {
@@ -44,9 +45,6 @@ class Main {
                 "5. EXIT");
 
 
-
-
-
         while (true) {
             int input1 = Integer.parseInt(scanner.nextLine());
 
@@ -56,31 +54,39 @@ class Main {
                 int input2 = Integer.parseInt(scanner.nextLine());
                 addingIncome(input2);
                 System.out.print("income added\n");
-                for(int i = 0; i < 100; i++){
+                toplamIncome = 0;
+                for (int i = 0; i < 100; i++) {
                     toplamIncome = incomes[i] + toplamIncome;
 
                 }
+                System.out.println(toplamIncome);
 
             }
-
 
 
             if (input1 == 2) {
                 System.out.println("Add expenses:");
                 int input2 = Integer.parseInt(scanner.nextLine());
+                addingExpense(input2);
+
+                System.out.println("what is this expense for?");
+                String input3 = scanner.nextLine();
+
+                harcamalar[counter3] = input3;
+                counter++;
+
 
                 expenses[counter2] = input2;
                 counter2++;
                 System.out.print("expense added\n");
 
-                for(int i = 0; i < 100; i++){
+                toplamExpense = 0;
+                for (int i = 0; i < 100; i++) {
                     toplamExpense = expenses[i] + toplamExpense;
 
                 }
 
             }
-
-
 
 
             if (input1 == 3) {
@@ -92,31 +98,33 @@ class Main {
                 balance = BALANCE;
 
 
-
                 System.out.println(balance);
 
             }
 
 
-
             if (input1 == 4) {
                 System.out.println("Showing expenses");
+                for (String eleman2 : harcamalar) {
+                    if (eleman2 != null && !eleman2.isBlank()) {
+                        System.out.println(eleman2);
+                    }
+                }
                 for (int eleman : expenses) {
-                    System.out.println(eleman);
+                    if (eleman != 0) {
+                        System.out.println(eleman);
 
+                    }
 
                 }
-
             }
 
+                    if (input1 == 5) {
+                        System.out.println("EXIT");
+                        break;
+                    }
 
-
-            if (input1 == 5) {
-                System.out.println("EXIT");
-                break;
-            }
-
+                }
             }
         }
-    }
 
